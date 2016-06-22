@@ -13,6 +13,8 @@ LDFLAGS=
 
 
 RM=rm -f
+CHOWN=chown
+CHMOD=chmod
 
 
 SRCS=main.c
@@ -45,6 +47,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(echo-cmd) " LD    $@"
 	$(Q)$(CC) $(LDFLAGS) -o $@ $^
+	$(echo-cmd) " STICK $@"
+	$(Q)$(CHMOD) +s $@
 
 
 %.o : %.c
